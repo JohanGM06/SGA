@@ -1,7 +1,7 @@
 <?php
 Class DataBase{
     public static function conn(){
-        $hostname = "127.0.0.1:3307";
+        $hostname = "localhost:3306";
         $port = "3306";
         $database = "sga";
         $username = "root";
