@@ -1,5 +1,5 @@
 <?php
-        // require_once "models/DataBase.php"; 
+        require_once "models/DataBase.php";
 
         if (!isset($_REQUEST['c'])) {
             require_once "controllers/Login.php";
