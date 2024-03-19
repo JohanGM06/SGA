@@ -2,8 +2,12 @@
 class Login
 {
     private $pdo;
+ 
     public function __construct()
+    
     {
+   
+
         try {
             $this->pdo = DataBase::conn();
         } catch (Exception $e) {
@@ -14,11 +18,15 @@ class Login
     { {
             if (session_start() == true) {
                 session_destroy();
+                
+        
+               
                 require_once "views/Login/Login.view.php";
             }
         }
     }
     public function login()
+
     {
         if ($_POST) {
             session_start();
@@ -38,7 +46,7 @@ class Login
                     $_SESSION['id_usuario'] = $usuario['id_usuario'];
                     $_SESSION['nombre'] = $usuario['nombre'];
                     $_SESSION['permiso'] = $usuario['permiso'];
-                    
+
                     header("Location:?c=Login&a=menu");
 
                 } else {
@@ -56,6 +64,9 @@ class Login
     }
     public function menu()
     {
-        require_once "views/Principal/Principal.view.php";
+        require_once "views/encabezado.php";
+        require_once "views/pie.php";
+        require_once "views/Principal/Principal.php";
+    //    require_once "views/Principal/principal.php";
     }
 }

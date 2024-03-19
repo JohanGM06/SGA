@@ -1,14 +1,13 @@
 <?php
-session_start();
+ session_start();
 
-if (empty($_SESSION['id_usuario'])) {
-?>
+ if (empty($_SESSION['id_usuario'])) {
+ ?>
     <script language='JavaScript'>
-        alert("Ingreso no correcto");
         location.href = "?c=Login&a=main";
     </script>
-<?php
-}
+ <?php
+ }
 require_once "models/Producto.php";
 class Productos
 {
@@ -17,20 +16,31 @@ class Productos
     public function __CONSTRUCT()
     {
         $this->model = new Producto();
+        
     }
 
     public function main()
     {
+        require_once "views/encabezado.php";
+        require_once "views/pie.php";
         require_once "views/Producto/producto.view.php";
     }
     public function nuevo()
     {
         if (isset($_REQUEST['id_producto'])) {
             $alm = $this->model->Obtener($_REQUEST['id_producto']);
+            require_once "views/encabezado.php";
+            require_once "views/pie.php";
             require_once "views/Producto/producto.update.php";
+
+         
+            
         } else {
             $alm = $this->model->Obtener(0);
+            require_once "views/encabezado.php";
+            require_once "views/pie.php";
             require_once "views/Producto/producto.new.php";
+           
         }
     }
     public function Guardar()
@@ -51,6 +61,8 @@ class Productos
     {
         if (isset($_REQUEST['id_producto'])) {
             $alm = $this->model->Obtener($_REQUEST['id_producto']);
+            require_once "views/encabezado.php";
+            require_once "views/pie.php";
             require_once "views/Producto/producto.cantidad.php";
         }
     }
@@ -70,5 +82,7 @@ class Productos
         $this->model->Eliminar($_REQUEST['id']);
         header("Location:?c=Productos&a=main");
     }
+
+    
 }
 ?>

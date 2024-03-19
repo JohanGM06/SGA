@@ -1,14 +1,14 @@
 <?php
-session_start();
+ session_start();
 
-if (empty($_SESSION['id_usuario'])) {
-?>
-    <script language='JavaScript'>
+ if (empty($_SESSION['id_usuario'])) {
+ ?>
+     <script language='JavaScript'>
         alert("Ingreso no correcto");
         location.href = "?c=Login&a=main";
-    </script>
-<?php
-}
+     </script>
+ <?php
+ }
 require_once "models/Venta.php";
 class Ventas
 {
@@ -21,15 +21,21 @@ class Ventas
 
     public function main()
     {
+        require_once "views/encabezado.php";
+        require_once "views/pie.php";
         require_once "views/Salida/salida.view.php";
     }
     public function nuevo()
     {
         if (isset($_REQUEST['id_salida'])) {
             $alm = $this->model->Obtener($_REQUEST['id_salida']);
+            require_once "views/encabezado.php";
+            require_once "views/pie.php";
             require_once "views/Salida/salida.update.php";
         } else {
             $alm = $this->model->Obtener(0);
+            require_once "views/encabezado.php";
+            require_once "views/pie.php";
             require_once "views/Salida/salida.new.php";
         }
     }
