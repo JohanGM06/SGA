@@ -63,7 +63,7 @@ class Producto
                     nombre = ?,
                     precio = ?,
                     talla = ?,
-                    fecha_modificado = NULL,
+                    fecha_modificado = current_timestamp(),
                     proveedor = ?
                     WHERE id_producto = ?;";
 
@@ -131,7 +131,8 @@ class Producto
     {
         try {
             $sql = "UPDATE producto SET
-            cantidad = ((cantidad) + ?)
+            cantidad = ((cantidad) + ?),
+            fecha_modificado = current_timestamp()
             WHERE id_producto = ?;";
 
             $this->pdo->prepare($sql)

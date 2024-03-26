@@ -107,17 +107,17 @@ class Venta
                         $data->observaciones
                     )
                 );
-                $sql2 = "UPDATE producto SET
+            $sql2 = "UPDATE producto SET
                 cantidad = ((cantidad) - ?)
                 WHERE id_producto = ?;";
-    
-                $this->pdo->prepare($sql2)
-                    ->execute(
-                        array(
-                            $data->cantidad,
-                            $data->producto
-                        )
-                    );
+
+            $this->pdo->prepare($sql2)
+                ->execute(
+                    array(
+                        $data->cantidad,
+                        $data->producto
+                    )
+                );
         } catch (Exception $e) {
             die($e->getMessage());
         }

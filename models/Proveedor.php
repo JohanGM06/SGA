@@ -1,5 +1,6 @@
 <?php
-class Proveedor{
+class Proveedor
+{
     private $pdo;
     public $id_proveedor;
     public $nombre;

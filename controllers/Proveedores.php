@@ -1,23 +1,25 @@
 <?php
 session_start();
 
- if (empty($_SESSION['id_usuario'])) {
+if (empty($_SESSION['id_usuario'])) {
 ?>
     <script language='JavaScript'>
         alert("Ingreso no correcto");
-         location.href = "?c=Login&a=main";
-     </script>
- <?php
- }
+        location.href = "?c=Login&a=main";
+    </script>
+<?php
+}
 require_once "models/Proveedor.php";
-class Proveedores{
+class Proveedores
+{
     private $model;
 
     public function __CONSTRUCT()
     {
         $this->model = new Proveedor();
     }
-    public function main(){
+    public function main()
+    {
         require_once "views/encabezado.php";
         require_once "views/pie.php";
         require_once "views/Proveedor/proveedor.view.php";
@@ -48,7 +50,7 @@ class Proveedores{
         $alm->contacto_cel = $_REQUEST['contacto_cel'];
 
         $alm->id_proveedor != "" ? $this->model->Actualizar($alm) : $this->model->Registrar($alm);
-      
+
 
         header("Location:?c=Proveedores&a=main");
     }

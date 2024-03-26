@@ -1,14 +1,14 @@
 <?php
- session_start();
+session_start();
 
- if (empty($_SESSION['id_usuario'])) {
- ?>
-     <script language='JavaScript'>
+if (empty($_SESSION['id_usuario'])) {
+?>
+    <script language='JavaScript'>
         alert("Ingreso no correcto");
         location.href = "?c=Login&a=main";
-     </script>
- <?php
- }
+    </script>
+<?php
+}
 require_once "models/Venta.php";
 class Ventas
 {
