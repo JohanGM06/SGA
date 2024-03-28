@@ -2,11 +2,14 @@
 class DataBase
 {
     public static function conn(){
-        $hostname = "localhost";
+        $hostname = "sga.mysql.database.azure.com";
         $port = "3306";
-        $database = "sga";
-        $username = "root";
-        $password = "";
+        $database = "sgaAzure";
+        $username = "zac";
+        $password = "SGA2024.";
+        $options = array(
+            PDO::MYSQL_ATTR_SSL_CA => 'assets/DigiCertGlobalRootCA.crt.pem'
+        )
 
         $pdo = new PDO("mysql:host=$hostname;port=$port;dbname=$database;charset=utf8", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
