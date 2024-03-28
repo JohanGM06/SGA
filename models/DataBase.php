@@ -4,7 +4,7 @@ class DataBase
     public static function conn(){
         $hostname = "sga.mysql.database.azure.com";
         $port = "3306";
-        $database = "sgaAzure";
+        $database = "sga";
         $username = "zac";
         $password = "SGA2024.";
         $options = array(
