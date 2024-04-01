@@ -76,6 +76,6 @@ class Login
 
         require_once "views/encabezado.php";
         require_once "views/pie.php";
-        require_once "views/Principal/Principal.php";
+        require_once "views/Principal/principal.php";
     }
 }

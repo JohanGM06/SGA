@@ -48,4 +48,20 @@ class Log
             die($e->getMessage());
         }
     }
+
+
+    public function UsuariosCantidad()
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT COUNT(*) AS total_usuario FROM usuario");
+            $stm->execute();
+
+
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
 }

@@ -1,80 +1,35 @@
 
 
 // --------------------------------------ALERTA ELIMINACION DE PRODUCTO------------------------------------------
-function confirmarEliminar($id) {
-    swal({
+function fntdel(id) {
+    Swal.fire({
         title: "¿Estás seguro?",
         text: "Una vez eliminado, no podrás recuperar este producto",
         icon: "warning",
-        buttons: ["Cancelar", "Eliminar"],
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            // Si el usuario confirma la eliminación, realiza la petición AJAX
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
             $.ajax({
-                type: "REQUEST",
-                url: "?c=Productos&a=Eliminar&id=" + $id,
+                type: "POST",
+                url: "?c=Productos&a=Eliminar&id=" + id,
                 success: function (data) {
-                    // Actualiza la vista o realiza las acciones necesarias en caso de éxito
-                    swal("¡El producto ha sido eliminado correctamente!", {
-                        icon: "success",
-                    });
-                  // Recarga la página después de tres segundos
-                 setTimeout(function() {
-                 location.reload();
-                 }, 2000); // 3000 milisegundos = 3 segundos
+                    // Obtener el nombre del producto eliminado del JSON de respuesta
+                    var nombreProducto = data.nombre; // Asegúrate de que este sea el formato correcto según la respuesta de tu servidor
 
+                    Swal.fire("¡El producto ha sido eliminado!", {
+                        icon: "success",
+                    }).then((result) => {
+                        // Recargar la página después de la eliminación
+                        location.reload();
+                    });
                 },
                 error: function () {
-                    // En caso de error en la petición AJAX
-                    swal("¡Error!", "Hubo un problema al intentar eliminar el producto", "error");
-                }
-            });
-        } else {
-            // Si el usuario cancela la eliminación, muestra un mensaje de cancelación
-            swal("La eliminación ha sido cancelada", {
-                icon: "info",
-            });
-        }
-    });
-}
-// --------------------------------------ALERTA ELIMINACION DE PROVEEDORES------------------------------------------
-
-function confirmarEliminar($id) {
-    swal({
-        title: "¿Estás seguro?",
-        text: "Una vez eliminado, no podrás recuperar este producto",
-        icon: "warning",
-        buttons: ["Cancelar", "Eliminar"],
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            // Si el usuario confirma la eliminación, realiza la petición AJAX
-            $.ajax({
-                type: "REQUEST",
-                url: "?c=Proveedores&a=Eliminar&id=" + $id,
-                success: function (data) {
-                    // Actualiza la vista o realiza las acciones necesarias en caso de éxito
-                    swal("¡El producto ha sido eliminado correctamente!", {
-                        icon: "success",
-                    });
-                  // Recarga la página después de tres segundos
-                 setTimeout(function() {
-                 location.reload();
-                 }, 2000); // 3000 milisegundos = 3 segundos
-
+                    Swal.fire("Error", "Hubo un problema al intentar eliminar el producto", "error");
                 },
-                error: function () {
-                    // En caso de error en la petición AJAX
-                    swal("¡Error!", "Hubo un problema al intentar eliminar el producto", "error");
-                }
-            });
-        } else {
-            // Si el usuario cancela la eliminación, muestra un mensaje de cancelación
-            swal("La eliminación ha sido cancelada", {
-                icon: "info",
             });
         }
     });
@@ -82,43 +37,72 @@ function confirmarEliminar($id) {
 
 // --------------------------------------ALERTA ELIMINACION DE PROVEEDORES------------------------------------------
 
-function confirmarEliminar($id) {
-    swal({
+function fntdel1(id) {
+    Swal.fire({
         title: "¿Estás seguro?",
-        text: "Una vez eliminado, no podrás recuperar este producto",
+        text: "Una vez eliminado, no podrás recuperar este usuario",
         icon: "warning",
-        buttons: ["Cancelar", "Eliminar"],
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            // Si el usuario confirma la eliminación, realiza la petición AJAX
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
             $.ajax({
-                type: "REQUEST",
-                url: "?c=Ventas&a=Eliminar&id=" + $id,
+                type: "POST",
+                url: "?c=Usuarios&a=Eliminar&id=" + id, // Corrección aquí
                 success: function (data) {
-                    // Actualiza la vista o realiza las acciones necesarias en caso de éxito
-                    swal("¡El producto ha sido eliminado correctamente!", {
-                        icon: "success",
-                    });
-                  // Recarga la página después de tres segundos
-                 setTimeout(function() {
-                 location.reload();
-                 }, 2000); // 3000 milisegundos = 3 segundos
+                    // Obtener el nombre del usuario eliminado del JSON de respuesta
+                    var nombreUsuario = data.nombre; // Asegúrate de que este sea el formato correcto según la respuesta de tu servidor
 
+                    Swal.fire("¡El usuario ha sido eliminado!", {
+                        icon: "success",
+                    }).then((result) => {
+                        // Recargar la página después de la eliminación
+                        location.reload();
+                    });
                 },
                 error: function () {
-                    // En caso de error en la petición AJAX
-                    swal("¡Error!", "Hubo un problema al intentar eliminar el producto", "error");
-                }
-            });
-        } else {
-            // Si el usuario cancela la eliminación, muestra un mensaje de cancelación
-            swal("La eliminación ha sido cancelada", {
-                icon: "info",
+                    Swal.fire("Error", "Hubo un problema al intentar eliminar el usuario", "error");
+                },
             });
         }
     });
 }
 
-    
+
+// // --------------------------------------ALERTA ELIMINACION DE PROVEEDORES------------------------------------------
+function fntdel2(id) {
+    Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Una vez eliminado, no podrás recuperar este usuario",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "POST",
+                url: "?c=Proveedores&a=Eliminar&id=" + id, // Corrección aquí
+                success: function (data) {
+                    // Obtener el nombre del usuario eliminado del JSON de respuesta
+                    var nombreUsuario = data.nombre; // Asegúrate de que este sea el formato correcto según la respuesta de tu servidor
+
+                    Swal.fire("¡El proveedor ha sido eliminado!", {
+                        icon: "success",
+                    }).then((result) => {
+                        // Recargar la página después de la eliminación
+                        location.reload();
+                    });
+                },
+                error: function () {
+                    Swal.fire("Error", "Hubo un problema al intentar eliminar el usuario", "error");
+                },
+            });
+        }
+    });
+}
