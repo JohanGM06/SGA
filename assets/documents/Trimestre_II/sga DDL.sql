@@ -1,41 +1,142 @@
-CREATE TABLE `permiso` (
-  `id_permiso` int(11) NOT NULL,
-  `detalles` varchar(50) NOT NULL
-);
+/* ************************************************************************************* */
+/* ---------------------------------------- DDL ---------------------------------------- */
+/* ----------------------------- DATA DEFINITION LANGUAGE ------------------------------ */
+/* -------------------------- LENGUAJE DE DEFINICIÓN DE DATOS -------------------------- */
+/* ------------------------------------------------------------------------------------- */
+/* ************************************************************************************* */
+/* ------------------------------------------------------------------------------------- */
+/* 01. Mostrar BBDDs : .................... SHOW DATABASES                               */
+/* 02. Usar BBDD : ........................ USE __                                       */
+/* 03. Eliminar BBDD : .................... DROP DATABASE __                             */
+/* 04. Mostrar Tablas : ................... SHOW TABLES __.                              */
+/* 05. Mostar Columnas : .................. SHOW COLUMNS FROM __ . DESCRIBE __           */
+/* 06. Agregar Columna : .................. ALTER TABLE __ ADD __ __                     */
+/* 07. Renombrar Columna : ................ ALTER TABLE __ CHANGE __ __                  */
+/* 08. Eliminar Columna : ................. ALTER TABLE __ DROP __                       */
+/* 09. Agregar Valor x Defecto Columna : .. ALTER TABLE __ ALTER __ SET DEFAULT __       */
+/* 10. Eliminar Valor x Defecto Columna : . ALTER TABLE __ ALTER __ DROP DEFAULT         */
+/* 11. Mostrar Creación Tabla : ........... SHOW CREATE TABLE __                         */
+/* 12. Eliminar Restricción : ............. ALTER TABLE __ DROP CONSTRAINT __            */
+/* 13. Eliminar Índice : .................. ALTER TABLE __ DROP INDEX __                 */
+/* 14. Eliminar Llave Primaria : .......... ALTER TABLE __ DROP PRIMARY KEY              */
+/* 15. Limpiar Registros : ................ TRUNCATE __                                  */
+/* 16. Eliminar Tabla : ................... DROP TABLE __                                */
+/* 17. Crear Tabla : ...................... CREATE TABLE __ ( __ , __ )                  */
+/* 18. Renombrar Tabla : .................. RENAME TABLE __ TO __                        */
+/* 19. Crear Llave Primaria : ............. ALTER TABLE __ ADD PRIMARY KEY ( __ )        */
+/* 20. Crear Índice Campo : ............... CREATE INDEX __ ON __ ( __ )                 */
+/* 21. Crear Índice Multicampo : .......... CREATE INDEX _ ON _ ( __ , __ )              */
+/* 22. Crear Índice Único : ............... CREATE UNIQUE INDEX __ ON __ ( __ )          */
+/* 23. Crear Restricción : ................ ALTER TABLE __ ADD CONSTRAINT __             */
+/*     FOREIGN KEY ( __ ) REFERENCES __ ( __ ) ON DELETE CASCADE ON UPDATE CASCADE       */
+/* ------------------------------------------------------------------------------------- */
+/* BIBLIOGRAFÍA                                                                          */
+/* ------------------------------------------------------------------------------------- */
+/* ************************************************************************************* */
+/* EN CONSOLA: XAMPP / SHELL / cd mysql/bin / mysql -h localhost -u root -p / ENTER      */
+/* ************************************************************************************* */
 
-CREATE TABLE `producto` (
-  `id_producto` int(11) NOT NULL COMMENT 'numero de identificacion del producto',
-  `nombre` varchar(100) NOT NULL COMMENT 'nombre del producto',
-  `precio` bigint(20) NOT NULL COMMENT 'precio del producto',
-  `fecha_ingreso` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'fecha de ingreso con la fecha actual',
-  `talla` varchar(100) DEFAULT NULL COMMENT 'detalles extra del producto',
-  `cantidad` bigint(100) DEFAULT 0,
-  `fecha_modificado` datetime DEFAULT current_timestamp(),
-  `proveedor` int(11) NOT NULL
-);
+-- ------------------------------------------------------------------------------------- --
+-- 01. Mostrar BBDDs. ------------------------------------------------------------------ --
+--     SHOW DATABASES : ---------------------------------------------------------------- -- 
+-- ------------------------------------------------------------------------------------- --
+SHOW DATABASES;
 
-CREATE TABLE `proveedor` (
-  `id_proveedor` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `nit` int(11) NOT NULL,
-  `correo` varchar(100) DEFAULT NULL,
-  `contacto_nombre` varchar(100) DEFAULT NULL,
-  `contacto_cel` varchar(20) DEFAULT NULL
-);
+-- ------------------------------------------------------------------------------------- --
+-- 02. Usar BBDD. ---------------------------------------------------------------------- --
+--     USE __ : ------------------------------------------------------------------------ --
+-- ------------------------------------------------------------------------------------- --
+USE sga;
 
-CREATE TABLE `salida` (
-  `id_salida` int(11) NOT NULL,
-  `producto` int(11) NOT NULL,
-  `fecha_venta` datetime DEFAULT current_timestamp(),
-  `cantidad` bigint(20) NOT NULL,
-  `cliente_nombre` varchar(100) DEFAULT NULL,
-  `cliente_id` int(22) DEFAULT NULL,
-  `cliente_contacto` varchar(100) DEFAULT NULL,
-  `cliente_direccion` varchar(150) DEFAULT NULL,
-  `observaciones` text DEFAULT NULL
-);
+-- ------------------------------------------------------------------------------------- --
+-- 03. Eliminar BBDD. ------------------------------------------------------------------ --
+--     DROP DATABASE __ : -------------------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+DROP DATABASE sga;
 
-CREATE TABLE `usuario` (
+-- ------------------------------------------------------------------------------------- --
+-- 04. Mostrar Tablas. ----------------------------------------------------------------- --
+--     SHOW TABLES __ : ---------------------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+SHOW TABLES FROM sga;
+
+-- ------------------------------------------------------------------------------------- --
+-- 05. Mostar Columnas. ---------------------------------------------------------------- --
+--     SHOW COLUMNS FROM __ . DESCRIBE __ : -------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+SHOW COLUMNS FROM producto;
+DESCRIBE producto;
+-- ------------------------------------------------------------------------------------- --
+-- 06. Agregar Columna. ---------------------------------------------------------------- --
+--     ALTER TABLE __ ADD __ __ : ------------------------------------------------------ --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE producto
+ADD descripcion VARCHAR(255);
+-- ------------------------------------------------------------------------------------- --
+-- 07. Renombrar Columna. -------------------------------------------------------------- --
+--     ALTER TABLE __ CHANGE __ __ : --------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE producto
+CHANGE talla tamano varchar(100);
+-- ------------------------------------------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+-- 08. Eliminar Columna. --------------------------------------------------------------- --
+--     ALTER TABLE __ DROP __ : -------------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE salida
+DROP COLUMN observaciones;
+-- ------------------------------------------------------------------------------------- --
+-- 09. Agregar Valor x Defecto Columna. ------------------------------------------------ --
+--     ALTER TABLE __ ALTER __ SET DEFAULT __ :	---------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE producto
+ALTER COLUMN descripcion SET DEFAULT 'Sin descripción';
+-- ------------------------------------------------------------------------------------- --
+-- 10. Eliminar Valor x Defecto Columna. ----------------------------------------------- --
+--     ALTER TABLE __ ALTER __ DROP DEFAULT : ------------------------------------------ --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE producto
+ALTER COLUMN descripcion DROP DEFAULT;
+-- ------------------------------------------------------------------------------------- --
+-- 11. Mostrar Creación Tabla. --------------------------------------------------------- --
+--     SHOW CREATE TABLE __ : ---------------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+SHOW CREATE TABLE producto;
+-- ------------------------------------------------------------------------------------- --
+-- 12. Eliminar Restricción. ----------------------------------------------------------- --
+--     ALTER TABLE __ DROP CONSTRAINT __ : --------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE usuario DROP FOREIGN KEY fk_permiso;
+-- ------------------------------------------------------------------------------------- --
+-- 13. Eliminar Índice. ---------------------------------------------------------------- --
+--     ALTER TABLE __ DROP INDEX __ : -------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+DROP INDEX ind_permiso ON usuario;
+ALTER TABLE usuario DROP INDEX idx_usuario_permiso;
+
+
+-- ------------------------------------------------------------------------------------- --
+-- 14. Eliminar Llave Primaria. -------------------------------------------------------- --
+--     ALTER TABLE __ DROP PRIMARY KEY : ----------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE producto DROP PRIMARY KEY;
+-- ------------------------------------------------------------------------------------- --
+-- 15. Limpiar Registros. -------------------------------------------------------------- --
+--     TRUNCATE __ : ------------------------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+TRUNCATE usuario;
+
+-- ------------------------------------------------------------------------------------- --
+-- 16. Eliminar Tabla. ----------------------------------------------------------------- --
+--     DROP TABLE __ : ----------------------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+DROP TABLE usuario;
+
+-- ------------------------------------------------------------------------------------- --
+-- 17. Crear Tabla. -------------------------------------------------------------------- --
+--     CREATE TABLE __ ( __ , __ ) : --------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+CREATE TABLE usuario (  
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `usuario` varchar(50) NOT NULL,
@@ -43,45 +144,63 @@ CREATE TABLE `usuario` (
   `permiso` int(11) NOT NULL
 );
 
-ALTER TABLE `permiso`
-  ADD PRIMARY KEY (`id_permiso`);
+-- ------------------------------------------------------------------------------------- --
+-- 18. Renombrar Tabla. ---------------------------------------------------------------- --
+--     RENAME TABLE __ TO __ : --------------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+RENAME TABLE usuario TO PERSONAS;
+RENAME TABLE PERSONAS TO usuario;
 
-ALTER TABLE `producto`
-  ADD PRIMARY KEY (`id_producto`),
-  ADD KEY `PROVEEDOR` (`proveedor`);
+-- ------------------------------------------------------------------------------------- --
+-- 19. Crear Llave Primaria. ----------------------------------------------------------- --
+--     ALTER TABLE __ ADD PRIMARY KEY ( __ ) : ----------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE usuario ADD PRIMARY KEY (id_usuario);
+ALTER TABLE permiso ADD PRIMARY KEY (id_permiso);
 
-ALTER TABLE `proveedor`
-  ADD PRIMARY KEY (`id_proveedor`),
-  ADD UNIQUE KEY `nit` (`nit`);
+-- ------------------------------------------------------------------------------------- --
+-- 20. Crear Índice Campo. ------------------------------------------------------------- --
+--     CREATE INDEX __ ON __ ( __ ) :  ------------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+CREATE INDEX idx_nombre ON producto (nombre);
 
-ALTER TABLE `salida`
-  ADD PRIMARY KEY (`id_salida`),
-  ADD KEY `producto2` (`producto`);
+-- ------------------------------------------------------------------------------------- --
+-- 21. Crear Índice Multicampo. -------------------------------------------------------- --
+--     CREATE INDEX _ ON _ ( __ , __ ) : ----------------------------------------------- -- 
+-- ------------------------------------------------------------------------------------- --
+CREATE INDEX ind_id_usuario
+ON permiso (codigo_cred, identificacion_cred);
 
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD KEY `permiso` (`permiso`);
+-- ------------------------------------------------------------------------------------- --
+-- 22. Crear Índice Único. ------------------------------------------------------------- --
+--     CREATE UNIQUE INDEX __ ON __ ( __ ) : ------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+CREATE UNIQUE INDEX idx_nombre_usuario ON usuario (nombre);
 
-ALTER TABLE `permiso`
-  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT;
+-- ------------------------------------------------------------------------------------- --
+-- 23. Crear Restricción. -------------------------------------------------------------- --
+--     ALTER TABLE __ ADD CONSTRAINT __ FOREIGN KEY ( __ ) REFERENCES __ ( __ ) -------- --
+--     ON DELETE CASCADE ON UPDATE CASCADE : ------------------------------------------- --
+-- ------------------------------------------------------------------------------------- --
+ALTER TABLE usuario 
+ADD CONSTRAINT fk_permiso
+FOREIGN KEY (permiso)
+REFERENCES permiso(id_permiso)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+	
+/* ************************************************************************************* */
+/* ------------------------------------------------------------------------------------- */
+/* ----------------------------------- BIBLIOGRAFÍA ------------------------------------ */
+/* ------------------------------------------------------------------------------------- */
+/* ************************************************************************************* */
 
-ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'numero de identificacion del producto';
-
-ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `salida`
-  MODIFY `id_salida` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `producto`
-  ADD CONSTRAINT `PROVEEDOR` FOREIGN KEY (`proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `salida`
-  ADD CONSTRAINT `PRODUCTO` FOREIGN KEY (`producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `PERMISO` FOREIGN KEY (`permiso`) REFERENCES `permiso` (`id_permiso`) ON DELETE CASCADE ON UPDATE CASCADE;
+-- ------------------------------------------------------------------------------------- --
+-- Tutoriales de Programación ya. (s.f.). MySQL ya. Recuperado el 15 de Mayo de 2022,    --
+--      de https://www.tutorialesprogramacionya.com/mysqlya/                             --
+-- ------------------------------------------------------------------------------------- --
+-- Pildoras Informáticas. (16 de Julio de 2015). Curso SQL.                              --
+--      Recuperado el 16 de Abril de 2022, de [Archivo de Vídeo]                         --
+--      https://www.youtube.com/playlist?list=PLU8oAlHdN5Bmx-LChV4K3MbHrpZKefNwn         --
+--      página web                                                                       --
+-- ------------------------------------------------------------------------------------- --
