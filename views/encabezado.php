@@ -149,7 +149,7 @@
 
                 <!-- Topbar -->
                 <?php
-                setlocale(LC_TIME, 'spanish'); // Establecer el idioma español
+                setlocale(LC_TIME, 'es_CO.UTF-8'); // Establecer el idioma español
                 ?>
                 <nav class="navbar navbar-expand navbar-light bg-primary text-white topbar mb-4 static-top shadow">
                     <!-- Alternar barra lateral (barra superior) -->
