@@ -32,7 +32,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `permiso` (
   `id_permiso` int(11) NOT NULL,
   `detalles` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `permiso`
@@ -57,7 +57,7 @@ CREATE TABLE `producto` (
   `cantidad` bigint(100) DEFAULT 0,
   `fecha_modificado` datetime NOT NULL DEFAULT current_timestamp(),
   `proveedor` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -80,7 +80,7 @@ CREATE TABLE `proveedor` (
   `correo` varchar(100) DEFAULT NULL,
   `contacto_nombre` varchar(100) DEFAULT NULL,
   `contacto_cel` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `proveedor`
@@ -106,7 +106,7 @@ CREATE TABLE `salida` (
   `cliente_contacto` varchar(100) DEFAULT NULL,
   `cliente_direccion` varchar(150) DEFAULT NULL,
   `observaciones` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `salida`
@@ -128,7 +128,7 @@ CREATE TABLE `usuario` (
   `usuario` varchar(50) NOT NULL,
   `contraseña` varchar(50) NOT NULL,
   `permiso` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `usuario`
