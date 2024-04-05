@@ -40,7 +40,7 @@
                     </div>
 
 
-                    <input type="submit" value="Guardar producto" class="btn btn-primary">
+                    <input type="submit" value="Enviar" class="btn btn-primary">
                 </form>
 
                  <!-- Logout Modal-->
