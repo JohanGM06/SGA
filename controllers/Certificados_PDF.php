@@ -24,9 +24,14 @@ class Certificados_PDF
     $options->set('isPhpEnabled', true);
 
     $dompdf = new Dompdf($options);
+
+
+
     $html = '
     <h1>aqui van los pdf</h1>
         ';
+
+        
 
     $dompdf->loadHtml($html);
     $dompdf->render();

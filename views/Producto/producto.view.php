@@ -48,8 +48,8 @@
                                   </td>
                                   <td>
                                       <a href="?c=Productos&a=nuevo&id_producto=<?php echo $r->id_producto; ?>" class="btn btn-info btn-flat"><i class="fas fa-sync-alt"></i></a>
-                                      <a href="javascript:void(0);" onclick="fntdel(<?php echo $r->id_producto; ?>)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                      <!-- <a href="?c=Productos&a=Eliminar&id=<?php echo $r->id_producto; ?>" onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a> -->
+                                      <!-- <a href="javascript:void(0);" onclick="fntdel(<?php //echo $r->id_producto; ?>)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a> -->
+                                      <!-- <a href="?c=Productos&a=Eliminar&id=<?php //echo $r->id_producto; ?>" onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a> -->
                                   </td>
                               </tr>
                           <?php
