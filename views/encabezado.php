@@ -147,20 +147,36 @@
 
 
 
-                <!-- Topbar -->
-                <?php
-                setlocale(LC_TIME, 'es_CO.UTF-8'); // Establecer el idioma español
-                ?>
-                <nav class="navbar navbar-expand navbar-light bg-primary text-white topbar mb-4 static-top shadow">
-                    <!-- Alternar barra lateral (barra superior) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <div class="input-group">
-                        <h6></h6>
-                        <p class="ml-auto"><strong><?php echo strftime('', time()) ?>Colombia, <?php echo strftime('%d de %B de %Y', time()) ?></strong></p>
-                    </div>
+  <?php
+$meses = array(
+    'January' => 'enero',
+    'February' => 'febrero',
+    'March' => 'marzo',
+    'April' => 'abril',
+    'May' => 'mayo',
+    'June' => 'junio',
+    'July' => 'julio',
+    'August' => 'agosto',
+    'September' => 'septiembre',
+    'October' => 'octubre',
+    'November' => 'noviembre',
+    'December' => 'diciembre'
+);
 
+// Obtener el mes actual y traducirlo
+$mes_actual = date('F', time());
+$mes_actual_traducido = isset($meses[$mes_actual]) ? $meses[$mes_actual] : $mes_actual;
+?>
+
+<nav class="navbar navbar-expand navbar-light bg-primary text-white topbar mb-4 static-top shadow">
+    <!-- Alternar barra lateral (barra superior) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
+    <div class="input-group">
+        <h6></h6>
+        <p class="ml-auto"><strong><?php  ('H:i:s') ?> Colombia, <?php echo $mes_actual_traducido . ' ' . date('d \d\e Y') ?></strong></p>
+    </div>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
