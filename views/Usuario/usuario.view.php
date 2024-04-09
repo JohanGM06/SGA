@@ -6,11 +6,7 @@
       <div class="card shadow mb-4">
           <div class="card-header py-3">
               <h6 class="m-0-weight-bold text-primary">Usuarios</h6>
-              <a href="?c=Certificados_PDF&a=Usuarios" target="_blank">
-                <button class="btn btn-primary">
-                    Generar Listado De Usuarios
-                </button>
-              </a>
+
           </div>
           <div class="card-body">
               <div class="table-responsive">
